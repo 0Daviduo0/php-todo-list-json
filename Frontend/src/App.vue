@@ -11,9 +11,9 @@ export default {
 
 <template>
 
-<ToDo_API_CALL>
-  
-</ToDo_API_CALL>
+<ToDo_API_CALL/>
+
+
 
 </template>
 
