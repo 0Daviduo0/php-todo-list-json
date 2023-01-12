@@ -2,7 +2,7 @@
 
     import axios from 'axios';
 
-    const ToDO_URL = 'http://localhost/php-todo-list-json/Backend/ToDo_API.php';
+    const ToDO_URL = 'http://localhost/php-todo-list-json/Backend/';
 
     export default {
         name: 'ToDo_API_CALL',
@@ -17,19 +17,28 @@
         methods: {
             addNote(no_reload) {
                 no_reload.preventDefault();
-                console.log(this.newNote);
+
+                const ToDo_par = {
+                    params: {
+                        'newNote': this.newNote
+                    }
+                };
+
+                axios.get(ToDO_URL + "addToDo_API.php", ToDo_par)
+                .then(() => {
+                    this.RetrieveNotes();
+                });
+            },
+            RetrieveNotes(){
+                axios.get(ToDO_URL + "ToDo_API.php")
+                .then(res => {
+                    const data = res.data;
+                    this.ToDoList = data;
+                })
             }
         },
         mounted() {
-            // data get sendend to server
-            axios.get(ToDO_URL, { params: {'test2' : 'Anche questo è un test'}})
-                // data get picked from server
-                .then(res => {
-
-                const data = res.data;
-                this.ToDoList = data;
-
-                })
+            this.RetrieveNotes();
         }
     }
 
