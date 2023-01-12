@@ -20,4 +20,5 @@ $testObj = [
 
 header('Content-Type: application/json');
 
+// need to be printed and encoded
 echo json_encode($testObj);
