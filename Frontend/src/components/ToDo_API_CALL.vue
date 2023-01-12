@@ -6,6 +6,11 @@
 
     export default {
         name: 'ToDo_API_CALL',
+        data() {
+            return{
+                ToDoList: []
+            }
+        },
         mounted() {
             // data get sendend to server
             axios.get(ToDO_URL, { params: {'test2' : 'Anche questo è un test'}})
@@ -13,7 +18,7 @@
                 .then(res => {
 
                 const data = res.data;
-                console.log(data)
+                this.ToDoList = data;
 
                 })
         }
@@ -23,6 +28,12 @@
 
 <template>
 
+    <h1>ToDo APP</h1>
+    <ul>
+        <li v-for="(note, index) in ToDoList" :key="index">
+            {{  note.text }}
+        </li>
+    </ul>
 
 </template>
 
