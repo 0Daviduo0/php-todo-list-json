@@ -8,7 +8,16 @@
         name: 'ToDo_API_CALL',
         data() {
             return{
+
+                newNote: "",
+
                 ToDoList: []
+            }
+        },
+        methods: {
+            addNote(no_reload) {
+                no_reload.preventDefault();
+                console.log(this.newNote);
             }
         },
         mounted() {
@@ -34,6 +43,11 @@
             {{  note.text }}
         </li>
     </ul>
+
+    <form @submit="addNote">
+        <input type="text" name="userNote" v-model="newNote">
+        <input type="submit" value="Add Note">
+    </form>
 
 </template>
 
