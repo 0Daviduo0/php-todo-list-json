@@ -8,8 +8,8 @@ $newNote = $_GET['newNote'];
 
 // echo json_encode($todoList);
 
-$jsonTodoList = file_get_contents("todo.json", true);
-$ToDo_List = json_decode($jsonTodoList);
+$jsonTodoList = file_get_contents("todo.json");
+$todoList = json_decode($jsonTodoList);
 
 $todoList[] = [
     "text" => $newNote,

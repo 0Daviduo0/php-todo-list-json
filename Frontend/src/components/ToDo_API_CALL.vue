@@ -15,8 +15,8 @@
             }
         },
         methods: {
-            addNote(no_reload) {
-                no_reload.preventDefault();
+            addNote(e) {
+                e.preventDefault();
 
                 const ToDo_par = {
                     params: {
