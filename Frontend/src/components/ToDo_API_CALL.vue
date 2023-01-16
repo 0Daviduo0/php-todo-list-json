@@ -50,6 +50,24 @@
                 })
                 
             },
+            deleteNote(index){
+
+                const toggle_par = {
+                    params: {
+                        'index': index
+                    }
+                };
+
+                axios.get(ToDO_URL + "removeToDo_API.php", toggle_par)
+                .then(res => {
+                    const data = res.data;
+
+                    if (data == true){
+                        this.RetrieveNotes();
+                    }
+                })
+
+            },
             RetrieveNotes(){
                 axios.get(ToDO_URL + "ToDo_API.php")
                 .then(res => {
@@ -80,6 +98,10 @@
                     {{  note.text }}
                 </span>
 
+            </div>
+
+            <div class="deleteButton" @click="deleteNote(index)">
+                <i class="fa-solid fa-trash"></i>
             </div>
 
         </li>
