@@ -29,6 +29,27 @@
                     this.RetrieveNotes();
                 });
             },
+
+            toggleNote(index){
+
+                console.log(index);
+
+                const toggle_par = {
+                    params: {
+                        'index': index
+                    }
+                };
+
+                axios.get(ToDO_URL + "toggleToDo_API.php", toggle_par)
+                .then(res => {
+                    const data = res.data;
+
+                    if (data == true){
+                        this.RetrieveNotes();
+                    }
+                })
+                
+            },
             RetrieveNotes(){
                 axios.get(ToDO_URL + "ToDo_API.php")
                 .then(res => {
@@ -49,7 +70,18 @@
     <h1>ToDo APP</h1>
     <ul>
         <li v-for="(note, index) in ToDoList" :key="index">
-            {{  note.text }}
+
+            <div @click="toggleNote(index)">
+
+                <s v-if="note.completed">
+                    {{  note.text }}
+                </s>
+                <span v-else>
+                    {{  note.text }}
+                </span>
+
+            </div>
+
         </li>
     </ul>
 

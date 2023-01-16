@@ -1,1 +1,1 @@
-[{"text":"Nota1","completed":false},{"text":"Nota2","completed":false},{"text":"Nota3","completed":false},{"text":"Nota4","completed":false},{"text":"Nota5","completed":false}]
+[{"text":"Nota1","completed":false},{"text":"Nota2","completed":true},{"text":"Nota3","completed":true},{"text":"Nota4","completed":false},{"text":"Nota5","completed":false}]
